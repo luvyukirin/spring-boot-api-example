@@ -1,13 +1,13 @@
 pipeline {
-    agent{
-        docker {
-            image 'node:14-alpine' }
+    agent {
+      docker {
+        image 'node:14-alpine'
+      }
     }
 
     triggers {
         pollSCM '* * * * *'
     }
-
     stages {
         stage('Build') {
             steps {
@@ -22,7 +22,7 @@ pipeline {
         stage('Build Docker image') {
             steps {
                 sh './gradlew docker'
-                // sh 'docker build -t lunasol/spring-boot-api-example:latest'
+            }
         }
         stage('Push Docker image') {
             environment {
@@ -35,4 +35,4 @@ pipeline {
         }
     }
 }
-}
+
