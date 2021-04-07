@@ -1,7 +1,8 @@
 pipeline {
     agent{
-        // docker { image 'node:14-alpine' }
-        dockerfile ture
+        docker {
+            image 'gradle:6.8.3-jdk11-openj9' }
+            lable 'docker'
     }
 
     triggers {
